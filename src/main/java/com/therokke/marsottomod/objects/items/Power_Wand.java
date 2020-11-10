@@ -12,14 +12,15 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Power_Wand extends SwordItem {
 
-    public static Effect[] effectList = {Effects.ABSORPTION ,Effects.HASTE};
-
+    //public static Effect[] effectList = {Effects.ABSORPTION ,Effects.HASTE};
+    public static ArrayList<Effect> effectList = new ArrayList<>();
     /*
-    *,Effects.INSTANT_HEALTH,Effects.GLOWING,Effects.JUMP_BOOST,Effects.SPEED,Effects.LUCK
+    *Effects.GLOWING,Effects.JUMP_BOOST,Effects.SPEED,Effects.LUCK
     *
     */
     public Power_Wand(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
@@ -28,14 +29,22 @@ public class Power_Wand extends SwordItem {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        effectList.add(Effects.ABSORPTION);effectList.add(Effects.HASTE);
         playerIn.clearActivePotions();
         ItemStack item = playerIn.getHeldItemMainhand();
+
         Random random = new Random();
-        int i =(int) (Math.random() * effectList.length);
+        int i =(int) (Math.random() * effectList.size());
 
-        playerIn.addPotionEffect(new EffectInstance(effectList[i],100,2));
+        playerIn.addPotionEffect(new EffectInstance(effectList.get(i),100,2));
         item.damageItem(15,playerIn,playerEntity -> {});
-
+        System.out.println(effectList.size());
         return super.onItemRightClick(worldIn, playerIn, handIn);
+
     }
+
+    public static void add(Effect newEffect){
+        effectList.add(newEffect);
+    }
+
 }
