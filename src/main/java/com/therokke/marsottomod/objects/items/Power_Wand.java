@@ -16,18 +16,22 @@ import java.util.Random;
 
 public class Power_Wand extends SwordItem {
 
-    Effect[] effectList = {Effects.ABSORPTION,Effects.HASTE,Effects.INSTANT_HEALTH};
+    public static Effect[] effectList = {Effects.ABSORPTION ,Effects.HASTE};
 
+    /*
+    *,Effects.INSTANT_HEALTH,Effects.GLOWING,Effects.JUMP_BOOST,Effects.SPEED,Effects.LUCK
+    *
+    */
     public Power_Wand(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
         super(tier, attackDamageIn, attackSpeedIn, builder);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        playerIn.clearActivePotions();
         ItemStack item = playerIn.getHeldItemMainhand();
-
         Random random = new Random();
-        int i =(int) (Math.random() * 4);
+        int i =(int) (Math.random() * effectList.length);
 
         playerIn.addPotionEffect(new EffectInstance(effectList[i],100,2));
         item.damageItem(15,playerIn,playerEntity -> {});

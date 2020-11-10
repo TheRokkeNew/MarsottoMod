@@ -1,15 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
+    "r",
+    "r",
     "i"
   ],
   "key": {
     "i": {
+      "item": "minecraft:stick"
+    },
+    "r": {
       "item": "marsottomod:ruby"
     }
   },
   "result": {
-    "item": "minecraft:iron_ingot",
+    "item": "marsottomod:power_wand",
     "count": 1
   }
 }

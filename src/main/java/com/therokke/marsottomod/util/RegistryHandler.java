@@ -1,6 +1,7 @@
 package com.therokke.marsottomod.util;
 
 import com.therokke.marsottomod.MarsottoMod;
+import com.therokke.marsottomod.objects.items.InstaHealth;
 import com.therokke.marsottomod.objects.items.Power_Wand;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
@@ -26,6 +27,6 @@ public class RegistryHandler {
             new Power_Wand(ItemTier.IRON,1,1,new Item.Properties().group(MarsottoMod.TAB)));
 
     //Custom Items
-
+    public static final RegistryObject<Item> INSTANT_HEALTH_ITEM = ITEMS.register("health_item", InstaHealth::new);
 
 }
