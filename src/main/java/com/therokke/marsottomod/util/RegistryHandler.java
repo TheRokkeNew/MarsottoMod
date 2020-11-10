@@ -19,6 +19,8 @@ public class RegistryHandler {
     //Basic Items
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",() -> new Item(new Item.Properties().group(MarsottoMod.TAB)));
 
+    //Tools
+
     //Custom Items
     public static final RegistryObject<Item> SPECIAL_ITEM = ITEMS.register("special_item", SpecialItem::new);
 
