@@ -1,6 +1,7 @@
 package com.therokke.marsottomod.objects.items;
 
 import com.therokke.marsottomod.MarsottoMod;
+import com.therokke.marsottomod.util.RegistryHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PotionEntity;
 import net.minecraft.item.Item;
@@ -22,9 +23,11 @@ public class SpecialItem extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-
+        ItemStack item = playerIn.getHeldItemMainhand();
         playerIn.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST,200,2));
-        System.out.println("Cliccato");
-        return ActionResult.resultSuccess(new ItemStack(Items.PUMPKIN));//playerIn.getHeldItem(handIn)
+        if(playerIn.inventory.hasItemStack(new ItemStack(RegistryHandler.SPECIAL_ITEM.get()))){
+            item.damageItem(50,playerIn,playerEntity -> {});
+        }
+        return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 }
