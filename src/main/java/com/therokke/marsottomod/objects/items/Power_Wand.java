@@ -29,7 +29,7 @@ public class Power_Wand extends SwordItem {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        effectList.add(Effects.ABSORPTION);effectList.add(Effects.HASTE);
+
         playerIn.clearActivePotions();
         ItemStack item = playerIn.getHeldItemMainhand();
 
@@ -46,5 +46,8 @@ public class Power_Wand extends SwordItem {
     public static void add(Effect newEffect){
         effectList.add(newEffect);
     }
-
+    public static void updateArrayList(){
+        effectList.add(Effects.ABSORPTION);
+        effectList.add(Effects.HASTE);
+    }
 }

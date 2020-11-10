@@ -1,5 +1,6 @@
 package com.therokke.marsottomod;
 
+import com.therokke.marsottomod.objects.items.Power_Wand;
 import com.therokke.marsottomod.util.RegistryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -7,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +34,8 @@ public class MarsottoMod
     public MarsottoMod() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        //Un metodo che aggiunge gli oggetti nell'arraylist
+        Power_Wand.updateArrayList();
 
         RegistryHandler.init();
 
@@ -54,5 +58,6 @@ public class MarsottoMod
             return new ItemStack(Items.GOLD_INGOT);
         }
     };
+
 
 }
