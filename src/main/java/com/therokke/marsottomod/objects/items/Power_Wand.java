@@ -24,6 +24,7 @@ public class Power_Wand extends SwordItem {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        playerIn.clearActivePotions();
         ItemStack item = playerIn.getHeldItemMainhand();
 
         Random random = new Random();
