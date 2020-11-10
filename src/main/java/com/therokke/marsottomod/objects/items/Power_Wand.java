@@ -28,9 +28,9 @@ public class Power_Wand extends SwordItem {
         ItemStack item = playerIn.getHeldItemMainhand();
 
         Random random = new Random();
-        int i =(int) Math.random() * 4;
+        int i =(int) (Math.random() * 4);
 
-        playerIn.addPotionEffect(new EffectInstance(effectList[i],200,2));
+        playerIn.addPotionEffect(new EffectInstance(effectList[i],100,2));
         item.damageItem(15,playerIn,playerEntity -> {});
 
         return super.onItemRightClick(worldIn, playerIn, handIn);
